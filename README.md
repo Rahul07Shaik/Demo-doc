@@ -1,7 +1,7 @@
 # Kit's Architecture 
 ## Introduction: 
   
-   When migrating to a swift package manager in Xcode, there are several challenges that developers may face. This document outlines some of the potential issues and the struggles we faced during the development of migrating them.
+   When migrating to a swift packages in Xcode, there are several challenges that developers may face. This document outlines some of the potential issues and the struggles we faced during the migration.
    
 ### Documentation
 
@@ -13,13 +13,14 @@
 - [Package Setup](#Package-Setup)
 
 
-## Challenges:
+## Challenges
 
-   - Swift package manager incompatible dependencies and version conflicts.
-   - May require updating or replacing existing dependencies to work with a new package manager.
+There are few challenges we used to face in kit migration. 
+   - Swift packages are struggle to update the latest dependencies and version updating conflicts.
+   - May require updating or replacing existing version to work with a new swift packages.
    - Changes to the file structure and build settings may be required, which can be time-consuming and disruptive.
    - Xcode may not support all types of packages, which can require manual integration or workarounds.
-   - Smooth development workflow can be maintained with proper planning, consideration and testing.
+   - Smooth development workflow can be maintained with proper planning.
         
 ## Dependency conflicts: 
 
