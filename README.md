@@ -1,7 +1,7 @@
 # Kit's Architecture 
 ## Introduction: 
   
-   When migrating to a new package dependency manager in Xcode, there are several challenges that developers may face. This documentation          outlines some of the potential issues, the stuggles we face during the development for mitigating them.
+   When migrating to a new package dependency manager in Xcode, there are several challenges that developers may face. This documentation          outlines some of the potential issues and the stuggles we faced during the development for migrating them.
    
 ### Documentation
 
