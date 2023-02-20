@@ -16,6 +16,9 @@
 - Dependency conflicts: 
 
     Configuring the new package manager can be complex and time-consuming, particularly if the project has many dependencies or requires a lot       of customization. Before migrating, developers should carefully plan the configuration process and consider automating certain aspects of       the setup. This can help reduce the potential for errors and inconsistencies. Different packages may have conflicting dependencies, which       can cause errors or unexpected behavior when migrating to a new package manager. This can be particularly challenging to resolve if the new     package manager has different rules for resolving conflicts than the old one.
+
+    - When using a kit's architecture-related dependency, it is important to note that only the kit should be consumed and module usage should         be prohibited. This means that any external code using the kit should only access the kit's public interface and not directly interact           with its internal modules or implementation details.
+      ![cycle-dep](https://user-images.githubusercontent.com/114584154/220047378-72df81e2-7c6d-4904-885f-864ecc1f1611.png)
     
 - Mitigation: 
 
@@ -33,4 +36,54 @@
     - New workflows: The new package manager may require different workflows for managing dependencies, which can take time for developers to         learn and adapt to.
 
     Migrating to a new package dependency manager in Xcode can be challenging, but with careful planning and testing, many of these challenges       can be mitigated. By reviewing compatibility, providing training, automating configuration, resolving dependency conflicts, and testing         performance, developers can ensure a smooth transition to the new package manager.
-    
+
+## File Structure
+
+    ├── A_Model                             # Model refers either to a domain model, which represents real state content
+    ├── B_Views                             # View is the structure, layout, and appearance of what a user sees on the screen.
+    ├── C_ViewModels                        # The view model has been described as a state of the data in the model. (Business Logic)
+    ├── D_ViewControllers                   # View Controller is responsible for displaying the data of our iOS application on the screen
+    ├── E_Protocols                         # Consists of all the necessary protocols needed by the module
+    ├── F_Service                           # The service is used to send HTTP requests or communicate with CoreData, PhotoPicker, and other serivces.
+    ├── H_Resources                         # contains all the resources like image assets, storyboards and others needed in the module
+    ├── <Kit> Module.swift                  # Root file container all the interface and callback initialization
+    └── <kit> ModuleInterface.swift         # File consists of protocols that are needed for Profile Module
+
+## Package Setup
+
+### Adding the dependency
+
+Adding kits in package dependency:
+``` swift
+#Example
+// MARK: - Products 
+var products: [Product] = [
+    .library(name: "AuthKit", targets: ["AuthKit"]),
+```
+dependencies:
+``` swift 
+#Example 
+// MARK: - Dependencies
+var dependencies: [PackageDescription.Package.Dependency] = [
+    .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", .upToNextMajor(from: .init(3, 3, 3))),
+```
+Targets:
+``` swift 
+#Example 
+// MARK: - Targets
+var targets: [Target] = [
+    .target(
+        name: "AuthKit",
+        dependencies: [
+            "KeychainAccess",
+            .product(name: "CommonInterfaceModule", package: "IOS-Common-Interface"),
+            .product(name: "NetworkKit", package: "IOS-Base-Kit"),
+            .product(name: "AnywhereSerializationKit", package: "IOS-Core-Kit"),
+            .product(name: "AnywhereLoggerKit", package: "IOS-Core-Kit")
+        ],
+        path: "Sources/AuthKit",
+        plugins: packagePlugins
+    ),
+  ]
+```
+Note : When using a kit's architecture-related dependency, it's crucial to only consume the kit and prohibit module usage. This means that external code should only access the kit's public interface and not interact with its internal modules. This approach promotes better code organization, encapsulation, and easier maintenance.
