@@ -1,7 +1,7 @@
 # Kit's Architecture 
 ## Introduction: 
   
-   When migrating to a new package dependency manager in Xcode, there are several challenges that developers may face. This documentation          outlines some of the potential issues, the stuggles we face during the development for mitigating them, In addition to the initiatives we        have taken to address the specific issues, there are other measures we can consider to further resolve the situation.
+   When migrating to a new package dependency manager in Xcode, there are several challenges that developers may face. This documentation          outlines some of the potential issues, the stuggles we face during the development for mitigating them.
    
 ### Documentation
 
@@ -16,11 +16,11 @@
 
 ## Challenges:
 
-  The new package manager's compatibility with existing dependencies is a major challenge, leading to build errors. It may require updating or replacing existing dependencies to work with the new manager due to its different requirements. Furthermore, compatibility with other tools and systems used in the project should be considered, such as continuous integration and deployment pipelines. Careful review and testing can help minimize disruptions during the migration process and maintain a smooth development workflow.
-    
-## Performance issues:
-
-  New package manager can impact performance during migration, especially if the project needs fast package management. It's essential to review   the new package manager's performance characteristics before migration and conduct performance testing to identify any issues.
+   - New package manager compatibility with existing dependencies is a challenge
+   - May require updating or replacing existing dependencies to work with new package manager
+   - Compatibility with other project tools and systems should be considered
+   - Careful review and testing can minimize disruptions during migration
+   - Smooth development workflow can be maintained with proper planning
         
 ## Dependency conflicts: 
 
