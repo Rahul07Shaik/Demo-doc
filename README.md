@@ -89,4 +89,5 @@ var targets: [Target] = [
     ),
   ]
 ```
-Note: When using a kit's architecture-related dependency, it's crucial to only consume the kit and prohibit module usage. This means that external code should only access the kit's public interface and not interact with its internal modules. This approach promotes better code organization, encapsulation, and easier maintenance.
+> **Note**\
+When using a kit's architecture-related dependency, it's important to only use the kit's public interface and avoid interacting with its internal modules to prevent 🔁 cycle dependency conflicts.
