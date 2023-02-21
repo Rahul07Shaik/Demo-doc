@@ -24,21 +24,24 @@ There are few challenges we used to face in kit migration.
         
 ## Dependency conflicts
 
-  Configuring the new packages can be complex and time-consuming, especially if the project has many dependencies or needs customization.   Conflicting dependencies between packages can cause errors or unexpected behavior during migration, which can be difficult to resolve if the new package manager has different conflict resolution rules than the old one.
+  Configuring new packages can be tricky, especially for projects with many customization needs. Conflicting version update during migration can   lead to errors or unexpected behavior that's hard to resolve if the new package's has different dependencies than the old one.
 
-   - When using a kit's architecture-related dependency, it is important to note that only the kit should be consumed and module usage should be prohibited. This means that any external code using the kit should only access the kit's public interface and not directly interact with its internal modules or implementation details.
+   - Only consume the kit, and prohibit module usage.
+   - Do not directly interact with the module dependency inside the kit's pakages.
      ![cycle-dep](https://user-images.githubusercontent.com/114584154/220047378-72df81e2-7c6d-4904-885f-864ecc1f1611.png)
     
 ## Minimisation 
 
-  To ensure a smooth migration to a new swift packages, developers should carefully review compatibility with existing dependencies and provide training and resources to the development team. Gradual transition and support during the learning process can reduce frustration and promote a positive attitude.
+   - Before deploying the migration to production, test the changes in a staging environment to ensure that everything is working as expected.
+   - Review existing dependencies version changes in Git can help you keep track of changes and provide a way to roll back changes if                necessary.
+   - Communicate with other developers when migrating a package, inform them about the migration process, notify them of any necessary changes        they may need to make.
+   - Make sure that any dependencies used by the package are up to date and compatible with the new version of Swift.
 
 ## Learning curve 
 
-  - Migrating to a new package dependency can be challenging for developers, requiring them to learn accurate naming conventions of dependency, and terminology.
-  - Specific challenges of the learning curve may include familiarity, differences in syntax, and new workflows.
+  - Migrating to a new package dependency can be challenging for developers, requiring them to learn accurate naming conventions of dependency,     and versions computability.
   - To overcome these challenges, developers should carefully plan and test the migration process without errors.
-  - Steps that can be taken to ensure a smooth transition include reviewing compatibility, providing training, automating configuration,             resolving dependency conflicts, and unit-testing.
+  - Steps that can be taken to ensure a smooth transition include resolving dependency conflicts, and unit-testing.
 
 ## File Structure
 
